@@ -1,3 +1,8 @@
+* {
+  font-family: 'Arial';
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +40,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.navLink {
+  padding: 22px;
+  width: 33.3333%;
+  background-color: #72a9b8;
+}
+
+.navLink:hover {
+  background-color: #55747c;
+  transition: 100ms ease-in;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+  color: aliceblue;
 }
