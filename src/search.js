@@ -15,10 +15,13 @@ const SearchBar = ({searchQuery, setSearchQuery}) => {
             onInput={e => setSearchQuery(e.target.value)}
             type="text"
             id="header-search"
-            placeholder="Najdi zboží"
+            placeholder="🔍"
             name="s" 
+            className="searchInput"
         />
-        <button type="submit">Search</button>
+        <button type="submit" style={{
+            display: "none"
+        }}>Search</button>
     </form>
 }
 

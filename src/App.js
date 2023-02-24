@@ -60,7 +60,10 @@ function App() {
 
   const addToCartHandler = function (product) {
     const newCart = [...cart];
-    console.log("Nakoupil sis zbozi " + product);
+    console.log("Nakoupil sis zbozi " + product.name);
+    console.log(document.getElementById(product.id).lastElementChild);
+    document.getElementById(product.id).lastElementChild.firstElementChild.style.display = 'none';
+    document.getElementById(product.id).lastElementChild.lastElementChild.style.display = 'block';
     newCart.push(product);
     setCart(newCart);
   }
@@ -76,14 +79,11 @@ function App() {
     <Router>
     <div className="App">
 
-      <nav style={{
-        display: "flex",
-        padding: "10px 10px 10px 10px",
-        width: "100%",
-        height: "80px"}}>
+      <nav className="navBar">
           <div style={{
             width: "30%",
-            backgroundColor: "#9ad2e1"}}>
+            backgroundColor: "#9ad2e1",
+            borderRadius: "10px 0px 0px 10px"}}>
             <h1>ALZA</h1>
           </div>
           <Link to="/" className="navLink">
@@ -97,9 +97,13 @@ function App() {
           </Link>
           
           <div style={{
-            backgroundColor: "#55747c"
+            backgroundColor: "#55747c",
+            borderRadius: "0px 10px 10px 0px"
           }}>
-          <CartSvg/>
+          <CartSvg 
+            width={40} 
+            height={40}
+          />
           {<div>{cart.length}</div>}
           </div>
       </nav>
@@ -123,9 +127,9 @@ function App() {
           <div style={{
             display: "flex",
             flexWrap: "wrap",
-            margin: "5px"
+            margin: "5px 30px"
           }}>
-            {filteredPosts.map(item => <Product key={item.id} product={item} onClickHandler={addToCartHandler}/>)}
+            {filteredPosts.map(item => <Product key={item.id} product={item} onClickHandler={() => addToCartHandler(item)}/>)}
           </div>
         </Route>
       </Switch>
